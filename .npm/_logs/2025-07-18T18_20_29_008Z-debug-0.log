@@ -1,0 +1,28 @@
+0 verbose cli /usr/bin/node-18 /usr/bin/npm
+1 info using npm@10.8.2
+2 info using node@v18.20.8
+3 silly config load:file:/usr/lib/nodejs18/lib/node_modules/npm/npmrc
+4 silly config load:file:/home/ec2-user/sample-app/.npmrc
+5 silly config load:file:/home/ec2-user/.npmrc
+6 silly config load:file:/etc/npmrc
+7 verbose title npm init
+8 verbose argv "init" "--yes"
+9 verbose logfile logs-max:10 dir:/home/ec2-user/.npm/_logs/2025-07-18T18_20_29_008Z-
+10 verbose logfile /home/ec2-user/.npm/_logs/2025-07-18T18_20_29_008Z-debug-0.log
+11 silly logfile done cleaning log files
+12 silly package data {
+12 silly package data   name: 'sample-app',
+12 silly package data   version: '1.0.0',
+12 silly package data   main: 'index.js',
+12 silly package data   scripts: { test: 'echo "Error: no test specified" && exit 1' },
+12 silly package data   keywords: [],
+12 silly package data   author: '',
+12 silly package data   license: 'ISC',
+12 silly package data   description: ''
+12 silly package data }
+13 verbose cwd /home/ec2-user/sample-app
+14 verbose os Linux 6.1.141-165.249.amzn2023.x86_64
+15 verbose node v18.20.8
+16 verbose npm  v10.8.2
+17 verbose exit 0
+18 info ok
