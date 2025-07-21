@@ -1,0 +1,12 @@
+{
+  "name": "bctapp",
+  "version": "1.0.0",
+  "description": "Sample Node.js app for Jenkins CI/CD",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "pramodddevops",
+  "license": "ISC",
+  "dependencies": {}
+}
