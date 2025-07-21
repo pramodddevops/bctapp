@@ -1,12 +1,6 @@
 pipeline {
     agent any
 
-    environment {
-        AWS_REGION = 'ap-south-1'
-        ECR_REPO = '659211415614.dkr.ecr.ap-south-1.amazonaws.com/bctapp'
-        IMAGE_TAG = "latest"
-    }
-
     triggers {
         githubPush()
     }
@@ -14,37 +8,25 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/pramodddevops/bctapp.git'
+                git branch: 'master', url: 'https://github.com/pramodddevops/bctapp.git'
             }
         }
-        stage('Build Docker Image') {
+        stage('Install Dependencies') {
             steps {
-                script {
-                    dockerImage = docker.build("${ECR_REPO}:${IMAGE_TAG}")
-                }
+                sh 'npm install'
             }
         }
-        stage('Login to ECR') {
+        stage('Build') {
             steps {
-                sh '''
-                aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $ECR_REPO
-                '''
+                sh 'npm run build || true' // Remove or modify if not needed
             }
         }
-        stage('Push to ECR') {
+        stage('Restart App') {
             steps {
-                script {
-                    dockerImage.push()
-                }
-            }
-        }
-        stage('Deploy on EC2') {
-            steps {
-                sh '''
-                docker rm -f bctapp || true
-                docker pull $ECR_REPO:$IMAGE_TAG
-                docker run -d --name bctapp -p 80:80 $ECR_REPO:$IMAGE_TAG
-                '''
+                // Stop any running app (customize as needed)
+                sh 'pkill -f "node" || true'
+                // Start the app (customize as needed)
+                sh 'nohup npm start &'
             }
         }
     }
